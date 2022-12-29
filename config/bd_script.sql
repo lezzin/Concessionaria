@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS concessionaria;
+
+CREATE TABLE carros (
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    marca VARCHAR(255) NOT NULL,
+    modelo VARCHAR(255) NOT NULL,
+    ano INT NOT NULL,
+    cor VARCHAR(255) NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    imagem VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);

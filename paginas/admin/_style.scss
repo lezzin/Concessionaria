@@ -1,0 +1,379 @@
+#adm_page {
+    padding: 5% 0;
+    width: 100%;
+
+    h1 {
+        text-align: center;
+        font-size: 3.6rem;
+    }
+
+    h2.title {
+        @include flexbox(row, unset, center);
+        gap: 1rem;
+
+        img {
+            transition: transform .3s ease;
+        }
+    }
+
+    section:hover {
+        h2.title>img {
+            transform: scale(1.05);
+        }
+    }
+
+    .navigation_container {
+        margin-top: 2rem;
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .links_container {
+            width: 90%;
+            margin: .5rem auto;
+
+        }
+
+        ul {
+            @include flexbox(row, center, center);
+
+
+            gap: 1rem;
+
+            li {
+                background: $white2;
+                width: 20rem;
+                list-style: none;
+                border-radius: .5rem;
+                transition: all 0.3s ease-in-out;
+                @include boxShadow(darken($white2, 15%), 3px);
+
+                &:hover {
+                    background: $borderColor;
+
+                    a {
+                        color: $black2;
+                    }
+                }
+
+                a {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    text-align: center;
+                    font-size: 1.6rem;
+                    font-weight: 500;
+                    padding: 1rem 2rem;
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+
+    .table_container {
+        margin-top: 3rem;
+
+        @media (max-width: 768px) {
+            overflow-x: auto;
+        }
+
+        .table {
+            width: calc(100% - 2rem);
+            margin: 2rem auto;
+            border-collapse: collapse;
+            border: 1px solid $borderColor;
+
+            thead {
+                background-color: $white2;
+                font-size: 1.8rem;
+                font-weight: 500;
+
+                tr {
+
+                    th {
+                        padding: 1rem;
+                        text-align: left;
+
+                        &.title {
+                            font-size: 2rem;
+                            text-align: center;
+                        }
+
+                        input {
+                            width: 100%;
+                            height: 100%;
+                            background: $white;
+                            font-size: 1.8rem;
+                            font-weight: 500;
+                            padding: 1rem 2rem;
+                            text-align: left;
+                            border-radius: .5rem;
+                        }
+                    }
+                }
+            }
+
+            tbody {
+                font-size: 1.6rem;
+
+                tr {
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        background-color: darken($white, 5%);
+                    }
+
+                    &.hide {
+                        display: none;
+                    }
+
+                    td {
+                        padding: 1rem;
+                        border-bottom: 1px solid $borderColor;
+
+                        &.empty {
+                            text-align: center;
+                        }
+
+                        &.details {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            max-width: 0;
+                        }
+
+                        &.actions {
+                            .btn {
+                                display: inline-block;
+                                padding: .5rem 1rem;
+                                border-radius: .5rem;
+                                font-size: 1.6rem;
+                                font-weight: 500;
+                                transition: all 0.3s ease-in-out;
+
+                                &.btn-secondary {
+                                    background-color: $black;
+                                    color: $white;
+
+                                    &:hover {
+                                        background-color: $black2;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .details {
+            margin: 0 auto;
+            width: calc(100% - 2rem);
+            font-size: 1.6rem;
+        }
+    }
+
+    .register_container {
+        margin-top: 3rem;
+
+        .title {
+            position: relative;
+
+            .alert {
+                @include flexbox(row, space-between, center);
+                position: absolute;
+                top: -6.4rem;
+                left: 9rem;
+                background-color: red;
+                box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+                margin: 2rem auto;
+                padding: 1rem 2rem;
+                border-radius: 1rem 1rem 1rem 0;
+                font-size: 1.6rem;
+                color: $white;
+                z-index: 10;
+
+                &:after {
+                    content: "";
+                    width: 0px;
+                    height: 0px;
+                    position: absolute;
+                    border-top: 1rem solid;
+                    border-right: 1rem solid;
+                    border-bottom: 1rem solid;
+                    border-left: 1rem solid;
+                    left: 0;
+                    bottom: -1rem;
+                    rotate: 10deg;
+                }
+
+                &.hide {
+                    display: none;
+                }
+
+                &.success {
+                    box-shadow: inset 0 0 6px darken($successColor, 10%);
+                    background-color: $successColor;
+
+                    &:after {
+                        border-color: $successColor transparent transparent $successColor;
+                    }
+                }
+
+                &.danger {
+                    box-shadow: inset 0 0 6px darken($errorColor, 10%);
+                    background-color: $errorColor;
+
+                    &:after {
+                        border-color: $errorColor transparent transparent $errorColor;
+                    }
+                }
+
+                .alert_button {
+                    background: transparent;
+                    font-size: 2rem;
+                    color: $white;
+                    transition: all 0.3s ease-in-out;
+                    cursor: pointer;
+                    margin-left: 2rem;
+
+                    &:hover {
+                        color: $white2;
+                    }
+                }
+            }
+        }
+
+        .form {
+            width: calc(100% - 2rem);
+            margin: 2rem auto;
+            border: 1px solid $borderColor;
+            border-radius: .5rem;
+            padding: 2rem;
+
+            h3 {
+                font-size: 2rem;
+                font-weight: 500;
+                margin-bottom: 2rem;
+            }
+
+            .row {
+                @include flexbox(row, space-between, center);
+                width: 100%;
+                gap: 1rem;
+
+                @media (max-width: 768px) {
+                    flex-direction: column;
+                }
+            }
+
+            .form_group {
+                width: 100%;
+                position: relative;
+                margin-bottom: 1rem;
+
+                .bottom {
+                    @include flexbox(row, space-between, center);
+                    width: 100%;
+                    margin-top: .6rem;
+                    font-size: 1.4rem;
+
+                    @media (max-width: 768px) {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 1rem;
+                    }
+
+                    .message {
+                        color: $warningColor;
+                    }
+                }
+
+                textarea {
+                    width: 100%;
+                    height: 10rem;
+                    padding: 1.2rem;
+                    border: 1px solid $borderColor;
+                    border-radius: .5rem;
+                    font-size: 1.6rem;
+                    font-weight: 500;
+                    resize: none;
+                    margin-top: .4rem;
+
+                    +#textarea_message {
+                        font-size: 1rem;
+                        margin-left: .4rem;
+                    }
+                }
+
+                label {
+                    font-size: 1.8rem;
+                    font-weight: 500;
+                }
+
+                input {
+                    margin-top: .4rem;
+                    width: 100%;
+                    padding: .8rem .8rem .8rem 1.2rem;
+                    border: 1px solid $borderColor;
+                    border-radius: .5rem;
+                    font-size: 1.6rem;
+                    font-weight: 500;
+
+                    &#price {
+                        padding: .8rem .8rem .8rem 4rem;
+
+                        ~.currency {
+                            position: absolute;
+                            top: 70%;
+                            left: 1rem;
+                            transform: translateY(-50%);
+                            font-size: 1.6rem;
+                            font-weight: 500;
+                        }
+                    }
+
+                    &::placeholder {
+                        font-weight: 100;
+                    }
+
+                }
+            }
+
+            .btn {
+                display: inline;
+                padding: .9rem 1.9rem;
+                border-radius: .5rem;
+                font-weight: 500;
+                font-size: 1.6rem;
+                transition: all 0.3s ease-in-out;
+                cursor: pointer;
+
+                &.register {
+                    color: $white;
+                    background-color: $buttonColor;
+
+                    &:hover {
+                        background-color: $buttonHover;
+                    }
+                }
+
+                &.reset {
+                    color: $black;
+
+                    &:hover {
+                        color: darken($black, 10%);
+                    }
+                }
+            }
+        }
+    }
+
+}

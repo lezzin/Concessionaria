@@ -1,0 +1,255 @@
+#s_catalog {
+    margin: 5% 0;
+
+    &:hover {
+        h2.title>img {
+            transform: scale(1.05);
+        }
+    }
+
+    .section_header {
+        @include flexbox(row, space-between, center);
+        width: 95%;
+        margin: 0 auto;
+
+        h2.title {
+            @include flexbox(row, unset, center);
+            gap: 1rem;
+            font-size: 3rem;
+            font-weight: 500;
+
+            img {
+                transition: transform .3s ease;
+            }
+        }
+
+        button {
+            background: transparent;
+            cursor: pointer;
+            font-size: 2rem;
+            transition: all 0.3s ease-in;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
+        }
+    }
+
+    .search_container {
+        @include flexbox(row, space-between, center);
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 4rem;
+
+        .search {
+            @include flexbox(row, unset, center);
+            gap: 1rem;
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid $borderColor;
+            border-radius: .5rem;
+            background-color: $white;
+
+            input {
+                width: 100%;
+                border: none;
+                background-color: transparent;
+                font-size: 2rem;
+                font-weight: 500;
+                color: $black;
+                padding: .5rem 2rem;
+            }
+        }
+    }
+
+    .card_group {
+        @include flexbox(row, center, stretch);
+        flex-wrap: wrap;
+        width: 90%;
+        height: auto;
+        gap: 1rem;
+        margin: 3rem auto;
+
+        .noResults {
+            width: 100%;
+            @include flexbox(column, center, center);
+
+            .container {
+                width: 100%;
+                @include flexbox(column, center, center);
+                color: $black;
+
+                h3 {
+                    text-align: center;
+                    font-size: 2rem;
+                    font-weight: 500;
+                }
+            }
+
+            &.hide {
+                display: none;
+            }
+        }
+
+        .card {
+            @include flexbox(column, space-between, unset);
+            width: 100%;
+            max-width: 312px;
+            background-color: $white;
+            border-radius: .5rem;
+            border: 1px solid $borderColor;
+            overflow: hidden;
+
+            @media (max-width: 768px) {
+                max-width: 100%;
+            }
+
+            &.hide {
+                display: none;
+            }
+
+            &:hover {
+                .image>img {
+                    transform: scale(1.02);
+                }
+
+                .title>h2 {
+                    color: $lightColor;
+                }
+            }
+
+            .image {
+                width: 100%;
+                overflow: hidden;
+
+                img {
+                    aspect-ratio: 16/9;
+                    transition: transform 0.3s ease-in-out;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .card_body,
+            .card_footer {
+                padding: 1rem;
+            }
+
+            .card_body {
+                width: 100%;
+                margin: 1rem auto;
+
+                .title {
+                    width: 100%;
+                    padding: 1rem 0;
+                    text-align: left;
+
+                    h2 {
+                        transition: color 0.3s ease-in-out;
+                        font-size: 2.5rem;
+                        font-weight: 600;
+                    }
+                }
+
+                .card_main {
+                    padding: 1rem 0;
+
+                    b {
+                        font-weight: 500;
+                    }
+
+                    .details {
+                        font-size: 1.7rem;
+                        font-weight: 500;
+                        color: $black2;
+                        margin-bottom: .6rem;
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+
+            .card_footer {
+                @include flexbox(column, space-between, center);
+                width: 100%;
+                background: darken($white, 3%);
+
+                .price {
+                    width: 100%;
+                    text-align: left;
+                    margin-bottom: 1rem;
+                    color: $priceColor;
+                    font-size: 2.5rem;
+                    font-weight: 500;
+
+                    .currency {
+                        font-size: 1.4rem;
+                        font-weight: 500;
+                    }
+                }
+
+                .buy_button {
+                    display: inline-block;
+                    background-color: $buttonColor;
+                    border-radius: .25rem;
+                    color: $white;
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                    transition: all 0.3s ease-in-out;
+                    cursor: pointer;
+                    align-self: flex-start;
+
+                    a {
+                        display: block;
+                        padding: 1rem 2rem;
+                        color: $white;
+
+                        i {
+                            margin-right: .5rem;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: $buttonHover;
+                    }
+                }
+            }
+        }
+    }
+
+    .empty_section {
+        @include flexbox(column, center, unset);
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        color: $warningColor;
+        padding: 5rem 0;
+        border: 1px solid $borderColor;
+        border-radius: .5rem;
+        margin-top: 2rem;
+
+        img {
+            border-radius: 50%;
+        }
+
+        i {
+            margin: 1rem 0;
+        }
+
+        p,
+        i {
+            font-size: 2.3rem;
+        }
+
+        a {
+            text-decoration: underline;
+            font-size: 1.3rem;
+            margin-top: 1rem;
+            padding: 1rem;
+        }
+    }
+}

@@ -1,0 +1,172 @@
+@import './auxiliar',
+'../paginas/home/style',
+'../paginas/admin/style',
+'../paginas/carros/style',
+'../paginas/carro/style',
+'../paginas/404/style',
+'../paginas/edit/style';
+
+body {
+    display: grid;
+    grid-template: "header" 10vh
+        "main" auto
+        "footer" 10vh / 100%;
+    background-color: $white;
+
+    &.no-scroll {
+        overflow: hidden;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: $white;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $darkColor;
+    border-radius: 10px;
+}
+
+.header {
+    grid-area: header;
+    background-color: $lightColor;
+    color: $white;
+    font-size: 1.8rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    .logo {
+        height: 100%;
+
+        a {
+            @include flexbox(row, center, center);
+            height: 100%;
+        }
+    }
+
+    .container {
+        width: 92%;
+        height: 100%;
+        margin: 0 auto;
+        @include flexbox(row, space-between, center);
+
+        .menu {
+            @include flexbox(row, center, center);
+            height: 100%;
+
+            ul {
+                @include flexbox(row, space-between, center);
+
+                li {
+                    list-style: none;
+                    margin: 0 1rem;
+
+                    a {
+                        font-size: 1.8rem;
+                        font-weight: 500;
+                        padding: .2rem 0;
+
+                        &:hover {
+                            border-bottom: 2px solid $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main {
+    grid-area: main;
+
+    .main_container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 2rem 0;
+        @include flexbox(column, center, center);
+
+        section {
+            width: 80%;
+            height: 100%;
+            min-height: 10vh;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            border: 1px solid $borderColor;
+            border-radius: 0.5rem;
+            box-shadow: $boxShadow1;
+
+            @media (max-width: 768px) {
+                width: 95%;
+            }
+
+            >h1 {
+                font-size: 3.2rem;
+                font-weight: 600;
+            }
+
+            >h2.title {
+                padding-left: 2rem;
+                font-size: 3rem;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+footer {
+    grid-area: footer;
+    font-size: 1.4rem;
+
+    .container {
+        @include flexbox(column, center, center);
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.toTop {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 5rem;
+    height: 5rem;
+    font-size: 5rem;
+    border-radius: 50%;
+    color: $lightColor;
+    z-index: 1000;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    opacity: 0;
+
+    &.show {
+        opacity: 1;
+    }
+
+    &:hover {
+        scale: 1.05;
+    }
+}
+
+.loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    @include flexbox(column, center, center);
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+    background: $lightColor;
+    z-index: 9999;
+
+    &.hide {
+        opacity: 0;
+    }
+}
